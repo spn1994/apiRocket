@@ -8,7 +8,7 @@ module.exports = {
     },
     //comanda abaixo é pra habilitar funcionalidade de quando deletar nota ele deleta em cascata
     pool: {
-      afterCreate: (conn, cb) => conn.run("PRAGMA = foreign_keys = ON, cb ")
+      afterCreate: (conn, cb) => conn.run("PRAGMA foreign_keys = ON", cb)
     },  
    
     migrations:{
