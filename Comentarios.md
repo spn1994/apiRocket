@@ -198,3 +198,18 @@ const tags=[
 const newArray = tags.filter(tag => tag.note_id === 1);
 console.log(newArray)
 --------------------------------------------------
+
+<!-- pra gerar token do usuario -->
+npm install jsonwebtoken
+
+CTRl + barra espaço é um atalho insomnia pra achar as funçoes do token enviroment no base(manange enviroment)
+
+<!-- biblioteca para upload -->
+npm install  multer
+
+
+----------------------------------------------------
+API Restfull
+biblioteca pra conectar front + back
+npm install cors
+--------------------------------------------

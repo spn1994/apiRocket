@@ -1,15 +1,21 @@
 require("express-async-errors");
 const migrationsRun = require("./databse/sqlite/migrations")
 const AppError = require("./utils/appError")
+const uploadConfig = require("./configs/upload")
 //importar express
 const express = require("express");
+//requisição para conectar back com front
+const cors = require("cors");
 //pra inicializar express
 //por padrao quando não coloca pasta de acesso ele usa index
 const routes = require("./routes");
 
 migrationsRun();
 const app = express();
+app.use(cors());
 app.use(express.json());
+//para imagem do usuario no insomnia
+app.use("/files", express.static(uploadConfig.UPLOADS_FOLDER))
 
 app.use(routes);
 
