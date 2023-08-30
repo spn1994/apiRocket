@@ -1,3 +1,5 @@
+//importar dotenv para dados sensiveis, nstala só deploy
+require("dotenv/config");
 require("express-async-errors");
 const migrationsRun = require("./databse/sqlite/migrations")
 const AppError = require("./utils/appError")
@@ -56,5 +58,5 @@ app.use(( error, request, response, next ) => {
 
 
 //qual porta que vai a requisição(endereço)
-const PORT = 3333;
+const PORT = process.env.PORT || 3333;
 app.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));

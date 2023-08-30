@@ -213,3 +213,20 @@ API Restfull
 biblioteca pra conectar front + back
 npm install cors
 --------------------------------------------
+
+//Local storage permite armazenar informaçoes no navegador do usuario(armazena chave ou valor)
+
+-------------------------
+Dados sensiveis
+instalar biblioteca
+npm install dotenv --save
+----------
+PM2 para sempre manter servidor online
+npx pm2 init
+
+https://pm2.keymetrics.io/docs/integrations/heroku/
+proximo passo
+
+npm install pm2
+apos configurado tudo 
+npm start

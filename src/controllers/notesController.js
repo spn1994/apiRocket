@@ -4,7 +4,7 @@ class NotesController {
   async create(request, response){
     const { title, description, tags, links } = request.body;
     const  user_id  = request.user.id;
-    //cadastrar nota
+    //cadastrar nota e devolve novo array
     const [note_id] = await knex("notes").insert({
       title,
       description,
@@ -72,6 +72,7 @@ class NotesController {
         .whereLike("notes.title", `%${title}%`)
         .whereIn("name", filterTags)
         .innerJoin("notes", "notes.id", "tags.note_id")
+        .groupBy("notes.id")
         .orderBy("notes.title")
 
     } else {

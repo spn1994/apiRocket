@@ -8,6 +8,8 @@ class TagsController {
     const tags = await knex("tags")
     //quando se tem nome igual, nao precisa por assim user_id: user_id 
     .where({ user_id })
+    // função q faz trazer só as coisas com nome
+    .groupBy("name")
 
     return response.json(tags);
   }
