@@ -1,27 +1,20 @@
 //importar criptografia e compare pra comparar criptografia da senha velha e nova
 const { hash, compare } = require("bcryptjs");
-const AppError = require("../utils/appError")
+const AppError = require("../utils/appError");
 
-const sqliteConnection = require("../databse/sqlite")
+const userRepository = require("../repositories/userRepository");
+const sqliteConnection = require("../databse/sqlite");
+const userCreateService = require("../services/userCreateService")
 
 class UsersController {
   async create(request, response) {
-
     const { name, email, password } = request.body;
+const UserRepository = new userRepository();
+const UserCreateService = new userCreateService(UserRepository);
 
-    const database = await sqliteConnection()
-    const checkUsersExist = await database.get("SELECT * FROM users WHERE email = (?)", [email])
-    if(checkUsersExist) {
-      throw new AppError("Este email já está em uso.");   
-    }
-    //criptografia senha
-    const hashedPassword = await hash(password, 8)
-      //insere usuario
-    await database.run(
-      "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
-      [ name, email, hashedPassword ]
-      );
-      return response.status(201).json();
+await UserCreateService.execute({ name, email, password });
+    
+    return response.status(201).json();
   }
   async update(request, response) {
     const { name, email, password, old_password } = request.body;

@@ -230,3 +230,18 @@ proximo passo
 npm install pm2
 apos configurado tudo 
 npm start
+
+----------------------
+para deploy
+https://render.com/
+ou 
+https://railway.app/
+
+----------------
+testes
+jest
+npm install --save-dev jest
+
+pra executar jest[
+  npx jest --init
+]
